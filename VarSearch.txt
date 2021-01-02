@@ -1,0 +1,1 @@
+In this string of words find the -> hidden <- word and save it to a variable in python.
