@@ -20,4 +20,16 @@ AUDIO_FILE = path.join(path.dirname(path.realpath(__file__)), "hello.wav")
 r = sr.Recognizer()
 with sr.AudioFile(AUDIO_FILE) as source:
     audio = r.record(source)
-    print(str(audio))
+    
+try:
+    print(r.recognize_sphinx(audio))
+except sr.UnknownValueError:
+    print("No understand")
+except sr.RequestError as e:
+    print("Error; {0}".format(e))
+
+text_string = r.recognize_sphinx(audio)
+if text_string == "hello":
+    print("How are you?")
+
+# Have it respond with text to speech 
